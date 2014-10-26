@@ -1,7 +1,7 @@
 #/bin/bash
 
-#ÏµÍ³»ù±¾ÊôĞÔÅäÖÃ
-echo "====¼´½«¶ÔÏµÍ³»ù±¾ÊôĞÔ½øĞĞĞŞ¸Ä===="
+#ç³»ç»ŸåŸºæœ¬å±æ€§é…ç½®
+echo "====å³å°†å¯¹ç³»ç»ŸåŸºæœ¬å±æ€§è¿›è¡Œä¿®æ”¹===="
 sleep 1
 echo "====Loading......===="
 
@@ -13,7 +13,7 @@ service iptables stop
 
 chkconfig iptables off
 
-#ĞŞ¸ÄÏµÍ³Ö§³ÖÎÄ¼şÊıÁ¿
+#ä¿®æ”¹ç³»ç»Ÿæ”¯æŒæ–‡ä»¶æ•°é‡
 cat >>/etc/security/limits.conf<<eof
 * soft nproc 65535
 * hard nproc 65535
@@ -22,11 +22,11 @@ cat >>/etc/security/limits.conf<<eof
 eof
 
 sleep 2
-echo "====»ù±¾ÊôĞÔĞŞ¸ÄÍê³É===="
+echo "====åŸºæœ¬å±æ€§ä¿®æ”¹å®Œæˆ===="
 
 
-#°²×°Nginx
-echo "====¼´½«°²×°Nginx===="
+#å®‰è£…Nginx
+echo "====å³å°†å®‰è£…Nginx===="
 sleep 1
 echo "====Loading......===="
 
@@ -41,10 +41,10 @@ chkconfig nginx on
 service nginx start
 
 sleep 2
-echo "====Nginx°²×°Íê³É===="
+echo "====Nginxå®‰è£…å®Œæˆ===="
 
-#°²×°PHP
-echo "====¼´½«°²×°PHP¼°Ïà¹Ø×é¼ş===="
+#å®‰è£…PHP
+echo "====å³å°†å®‰è£…PHPåŠç›¸å…³ç»„ä»¶===="
 sleep 1
 echo "====Loading......===="
 
@@ -59,16 +59,16 @@ chkconfig php-fpm on
 service php-fpm start
 
 sleep 2
-echo "====PHP¼°Ïà¹Ø×é¼ş°²×°Íê³É===="
+echo "====PHPåŠç›¸å…³ç»„ä»¶å®‰è£…å®Œæˆ===="
 
-#ÅäÖÃNginxÅäÖÃÎÄ¼ş(ĞèÒªÊÖ¹¤ÊäÈë,ÎŞ·¨Íê³É×Ô¶¯Ìæ»»)
-echo "====¼´½«¶ÔNginx¼°PHP½øĞĞÏà¹Ø»ù´¡ÅäÖÃ===="
+#é…ç½®Nginxé…ç½®æ–‡ä»¶(éœ€è¦æ‰‹å·¥è¾“å…¥,æ— æ³•å®Œæˆè‡ªåŠ¨æ›¿æ¢)
+echo "====å³å°†å¯¹NginxåŠPHPè¿›è¡Œç›¸å…³åŸºç¡€é…ç½®===="
 sleep 1
 echo "====Loading......===="
 
 \cp default.conf /etc/nginx/conf.d/default.conf
 
-#ÅäÖÃPHP-FPM
+#é…ç½®PHP-FPM
 sed -i "s/apache/nginx/g" /etc/php-fpm.d/www.conf
 
 mkdir /var/www/content
@@ -82,10 +82,10 @@ service nginx restart
 service php-fpm restart
 
 sleep 2
-echo "====Nginx¼°PHPÏà¹Ø»ù´¡ÅäÖÃÍê³É===="
+echo "====NginxåŠPHPç›¸å…³åŸºç¡€é…ç½®å®Œæˆ===="
 
-#´´½¨²âÊÔÎÄ¼ş
-echo "====¼´½«´´½¨²âÊÔÒ³Ãæ===="
+#åˆ›å»ºæµ‹è¯•æ–‡ä»¶
+echo "====å³å°†åˆ›å»ºæµ‹è¯•é¡µé¢===="
 sleep 1
 echo "====Loading......===="
 
@@ -94,11 +94,11 @@ touch /var/www/content/info.php
 echo '<?php phpinfo();' >> /var/www/content/info.php
 
 sleep 2
-echo "====²âÊÔÒ³Ãæ´´½¨Íê³É,Çë·ÃÎÊhttp://hostname(localhost)/info.php===="
+echo "====æµ‹è¯•é¡µé¢åˆ›å»ºå®Œæˆ,è¯·è®¿é—®http://hostname(localhost)/info.php===="
 
-echo "====NginxÏà¹ØÃüÁî(service nginx start|stop|restart|status)===="
-echo "====NginxÅäÖÃÎÄ¼ş(/etc/nginx/conf.d/default.conf)===="
-echo "====WEB¸ùÄ¿Â¼(/var/www/content)===="
-echo "====PHP-FPMÏà¹ØÃüÁî(service php-fpm start|stop|restart|status)===="
-echo "====PHP-FPMÅäÖÃÎÄ¼ş(/etc/php-fpm.d/www.conf)===="
-echo "====ÇëÏêÏ¸ÔÄ¶Áredeme.htmlÎÄ¼ş===="
+echo "====Nginxç›¸å…³å‘½ä»¤(service nginx start|stop|restart|status)===="
+echo "====Nginxé…ç½®æ–‡ä»¶(/etc/nginx/conf.d/default.conf)===="
+echo "====WEBæ ¹ç›®å½•(/var/www/content)===="
+echo "====PHP-FPMç›¸å…³å‘½ä»¤(service php-fpm start|stop|restart|status)===="
+echo "====PHP-FPMé…ç½®æ–‡ä»¶(/etc/php-fpm.d/www.conf)===="
+echo "====è¯·è¯¦ç»†é˜…è¯»redeme.htmlæ–‡ä»¶===="
